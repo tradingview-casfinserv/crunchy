@@ -1,23 +1,18 @@
 import streamlit as st
-import time
-import numpy as np
+import requests, redis
+import config, json
+from iex import IEXStock
+from helpers import format_number
+from datetime import datetime, timedelta
 
-progress_bar = st.sidebar.progress(0)
-status_text = st.sidebar.empty()
-last_rows = np.random.randn(1, 1)
-chart = st.line_chart(last_rows)
+symbol = st.sidebar.text_input("Symbol", value='MSFT')
 
-for i in range(1, 101):
-    new_rows = last_rows[-1, :] + np.random.randn(5, 1).cumsum(axis=0)
-    status_text.text("%i%% Complete" % i)
-    chart.add_rows(new_rows)
-    progress_bar.progress(i)
-    last_rows = new_rows
-    time.sleep(0.05)
+screen = st.sidebar.selectbox("View", ('Overview', 'Fundamentals', 'News', 'Ownership', 'Technicals'), index=1)
+stock = IEXStock(config.IEX_TOKEN, symbol)
+st.title(screen)
 
-progress_bar.empty()
-
-# Streamlit widgets automatically run the script from top to bottom. Since
-# this button is not connected to any other logic, it just causes a plain
-# rerun.
-st.button("Re-run")
+if screen == 'Overview':
+    url  = "https://api.twelvedata.com/symbol_search?symbol=tcs"
+    r = requests.get(url)
+    print(r.json())
+    st.write(r.json())
