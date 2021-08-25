@@ -13,10 +13,10 @@ class IEXStock:
         return r.json()
 
 
-    def get_stock_data(self):
-        bse_tcs = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=TCS.BSE&outputsize=full&apikey=4B3I85MF0DA0QN3G"
-        r = requests.get(bse_tcs)
-        r_json = r.json()
+    def get_stock_data(self, stock):
+        return requests.get(
+            f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol={stock}.BSE&outputsize=full&apikey=4B3I85MF0DA0QN3G"
+        ).json()
 
 
 

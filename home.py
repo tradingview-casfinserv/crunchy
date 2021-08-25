@@ -27,12 +27,52 @@ if st.sidebar.button("Index"):
     })
     st.table(df)
 if st.sidebar.button("Stocks"):
-
+    stock_data = stock.get_stock_data("TCS")
     # TCS
-    st.title("sdf")
-    stock_data = stock.get_stock_data()
+    st.title(stock_data["Meta Data"]["2. Symbol"])
     col1, col2, col3 = st.columns(3)
-    col1.metric(label="stock_data['']", value="70 °F", delta="1.2 °F")
-    col2.metric(label="Temperature", value="70 °F", delta="-1.2 °F")
-    col3.metric(label="Temperature", value="70 °F", delta="1.2 °F")
+
+    keys_list = list(stock_data["Time Series (Daily)"])
+
+    col1.metric(label=keys_list[0], value=stock_data["Time Series (Daily)"][keys_list[0]]["4. close"],
+                                           delta=round((float(stock_data["Time Series (Daily)"][keys_list[0]]["4. close"]) -
+                                                  float(stock_data["Time Series (Daily)"][keys_list[1]]["4. close"])), 2))
+    col2.metric(label=keys_list[1], value=stock_data["Time Series (Daily)"][keys_list[1]]["4. close"],
+                delta=round((float(stock_data["Time Series (Daily)"][keys_list[1]]["4. close"]) -
+                             float(stock_data["Time Series (Daily)"][keys_list[2]]["4. close"])), 2))
+    col3.metric(label=keys_list[2], value=stock_data["Time Series (Daily)"][keys_list[2]]["4. close"],
+                delta=round((float(stock_data["Time Series (Daily)"][keys_list[2]]["4. close"]) -
+                             float(stock_data["Time Series (Daily)"][keys_list[3]]["4. close"])), 2))
+
+    stock_data = stock.get_stock_data("INFY")
+    st.title(stock_data["Meta Data"]["2. Symbol"])
+    col1, col2, col3 = st.columns(3)
+
+    keys_list = list(stock_data["Time Series (Daily)"])
+
+    col1.metric(label=keys_list[0], value=stock_data["Time Series (Daily)"][keys_list[0]]["4. close"],
+                delta=round((float(stock_data["Time Series (Daily)"][keys_list[0]]["4. close"]) -
+                             float(stock_data["Time Series (Daily)"][keys_list[1]]["4. close"])), 2))
+    col2.metric(label=keys_list[1], value=stock_data["Time Series (Daily)"][keys_list[1]]["4. close"],
+                delta=round((float(stock_data["Time Series (Daily)"][keys_list[1]]["4. close"]) -
+                             float(stock_data["Time Series (Daily)"][keys_list[2]]["4. close"])), 2))
+    col3.metric(label=keys_list[2], value=stock_data["Time Series (Daily)"][keys_list[2]]["4. close"],
+                delta=round((float(stock_data["Time Series (Daily)"][keys_list[2]]["4. close"]) -
+                             float(stock_data["Time Series (Daily)"][keys_list[3]]["4. close"])), 2))
+
+    stock_data = stock.get_stock_data("RELIANCE")
+    st.title(stock_data["Meta Data"]["2. Symbol"])
+    col1, col2, col3 = st.columns(3)
+
+    keys_list = list(stock_data["Time Series (Daily)"])
+
+    col1.metric(label=keys_list[0], value=stock_data["Time Series (Daily)"][keys_list[0]]["4. close"],
+                delta=round((float(stock_data["Time Series (Daily)"][keys_list[0]]["4. close"]) -
+                             float(stock_data["Time Series (Daily)"][keys_list[1]]["4. close"])), 2))
+    col2.metric(label=keys_list[1], value=stock_data["Time Series (Daily)"][keys_list[1]]["4. close"],
+                delta=round((float(stock_data["Time Series (Daily)"][keys_list[1]]["4. close"]) -
+                             float(stock_data["Time Series (Daily)"][keys_list[2]]["4. close"])), 2))
+    col3.metric(label=keys_list[2], value=stock_data["Time Series (Daily)"][keys_list[2]]["4. close"],
+                delta=round((float(stock_data["Time Series (Daily)"][keys_list[2]]["4. close"]) -
+                             float(stock_data["Time Series (Daily)"][keys_list[3]]["4. close"])), 2))
 
