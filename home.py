@@ -1,5 +1,5 @@
 import streamlit as st
-import requests, redis
+import requests
 import config, json
 from twelve_data_connector import *
 from helpers import format_number
