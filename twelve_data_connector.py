@@ -12,6 +12,14 @@ class IEXStock:
         r = requests.get(url)
         return r.json()
 
+
+    def get_stock_data(self):
+        bse_tcs = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=TCS.BSE&outputsize=full&apikey=4B3I85MF0DA0QN3G"
+        r = requests.get(bse_tcs)
+        r_json = r.json()
+
+
+
     def get_logo(self):
         url = f"{self.BASE_URL}/stock/{self.symbol}/logo?token={self.token}"
         print(url)

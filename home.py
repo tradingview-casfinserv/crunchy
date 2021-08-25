@@ -27,8 +27,12 @@ if st.sidebar.button("Index"):
     })
     st.table(df)
 if st.sidebar.button("Stocks"):
+
+    # TCS
+    st.title("sdf")
+    stock_data = stock.get_stock_data()
     col1, col2, col3 = st.columns(3)
-    col1.metric(label="Temperature", value="70 °F", delta="1.2 °F")
+    col1.metric(label="stock_data['']", value="70 °F", delta="1.2 °F")
     col2.metric(label="Temperature", value="70 °F", delta="-1.2 °F")
     col3.metric(label="Temperature", value="70 °F", delta="1.2 °F")
 
