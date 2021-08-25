@@ -1,7 +1,7 @@
 import streamlit as st
 import requests, redis
 import config, json
-from iex import IEXStock
+from twelve_data_connector import IEXStock
 from helpers import format_number
 from datetime import datetime, timedelta
 
